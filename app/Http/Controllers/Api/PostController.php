@@ -22,8 +22,17 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Post::query();
-        return PostResource::collection($query->paginate(20,['id','title'],'page'));
+        $req = $request->all();
+        $home = (isset($req['homepage'])) ? $req['homepage'] : "";
+        if($home === 'yes'){
+            $query = Post::query();
+            return PostResource::collection($query->paginate(10,['id','title','picture','body'],'page'));
+        }
+        else{
+            $query = Post::query();
+            return PostResource::collection($query->paginate(20,['id','title'],'page'));
+        }
+        
     }
 
     /**
@@ -104,6 +113,7 @@ class PostController extends Controller
     {
         
         $req = $request->all();
+        // return $req;
         $post = Post::find($id);
         // $post = Post::find($req['id']);
         // return $post;

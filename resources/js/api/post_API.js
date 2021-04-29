@@ -8,8 +8,9 @@ const urlAPI = {
   urlPOSTpost: template`/post`,
   //  Get a Meeting Infomation
   urlGETpost: template`/post?page=${'params'}`,
+  urlGETpostHomepage: template`/post?page=${'params'}&homepage=${'home'}`,
   // Update Meeting Infomation
-  urlPUTpost: template`/post/${'post'}`,
+  urlPUTpost: template`/post/${'post'}?_method=PUT`,
   // Delete partisipant belong to {meeting_id}
   urlDELETEpost: template`/post/${'post'}`,
   urlGETSiglepost: template`/post/${'post'}`,
@@ -28,7 +29,11 @@ export function createPost(params) {
  * @param {String} id
  */
 export function getPost(params){
-  return request.getRequest(urlAPI.urlGETpost({ params: params.page }));
+  if (params.homepage){
+    return request.getRequest(urlAPI.urlGETpostHomepage({ params: params.page, home: params.homepage }));
+  } else {
+    return request.getRequest(urlAPI.urlGETpost({ params: params.page }));
+  }
 }
 /**
  * Validate a full-lowercase string
@@ -45,7 +50,7 @@ export function getOnePost(id) {
  * @param {Object} params
  */
 export function updatePost(params, id) {
-  return request.putRequest(urlAPI.urlPUTpost({ post: id }), params);
+  return request.postRequest(urlAPI.urlPUTpost({ post: id }), params);
 }
 
 /**

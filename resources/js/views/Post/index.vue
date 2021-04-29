@@ -136,6 +136,24 @@
           </b-form-group>
         </b-card>
         <b-card>
+          <b-form-group
+            id="photo"
+            content-cols-lg="6"
+            label-cols-lg="2"
+            label="Picture"
+            label-for="btn_pic_avatar"
+          >
+            <div>
+              <b-button id="btn_pic_avatar" class="btnInputAvatar"> <b-icon icon="upload" /> </b-button>
+              <b-form-file id="pic_avatar" class="inputAvatar" accept="image/jpeg,image/jpg, image/png, image/gif" @change="preview_avatar" />
+            </div>
+            <div class="photo_preview">
+              <b-img thumbnail fluid :src="photo" alt="Image 1" />
+            </div>
+
+          </b-form-group>
+        </b-card>
+        <b-card>
           <ckeditor v-model="body" />
         </b-card>
         <div v-if="createOrUpdate === 'create'">
@@ -155,6 +173,8 @@
         title="Detail Post"
         size="xl"
       >
+        <h3>{{ title }}</h3>
+        <b-img thumbnail fluid :src="photo" alt="Image 1" />
         <div v-html="body" />
       </b-modal>
       <b-modal
@@ -188,7 +208,7 @@
           foot-variant="light"
         >
           <template #cell(option)="row">
-            <b-button size="sm" class="mr-2" @click="openDetailPopUp(row.item)">
+            <b-button size="sm" class="mr-2" @click="openDetailPopUp(row.item.id)">
               Details
             </b-button>
 
@@ -239,6 +259,7 @@ export default {
       value_categories: [],
       title: '',
       body: '',
+      photo: 'https://yesoffice.com.vn/wp-content/themes/zw-theme//assets/images/default.jpg',
       id: '',
       pagination: {
         perPage: 3,
@@ -312,6 +333,11 @@ export default {
       addTag(option);
       this.search = '';
     },
+    preview_avatar() { // preview avatar after change avatar
+      if (document.getElementById('pic_avatar').files[0]){
+        this.photo = URL.createObjectURL(document.getElementById('pic_avatar').files[0]);
+      }
+    },
     async getListCategories(){
       await getCategories()
         .then((res) => {
@@ -343,10 +369,22 @@ export default {
           this.pagination.total_row = res.meta.total;
         });
     },
-    openDetailPopUp(item){
-      this.category.id = item.id;
-      this.category.name = item.name;
-      this.$refs['detail'].show();
+    async openDetailPopUp(item){
+      this.resetFeild();
+      await getOnePost(item)
+        .then((res) => {
+          this.title = res.title;
+          this.body = res.body;
+          this.id = item;
+          this.photo = res.picture;
+          for (let i = 0; i < res.tags.length; i++){
+            this.value_tag.push(res.tags[i].name);
+          }
+          for (let i = 0; i < res.categories.length; i++){
+            this.value_categories.push(res.categories[i].name);
+          }
+          this.$refs['detail'].show();
+        });
     },
     async openUpdatePopUp(item){
       this.title_modal = 'Edit Post';
@@ -357,6 +395,7 @@ export default {
           this.title = res.title;
           this.body = res.body;
           this.id = item;
+          this.photo = res.picture;
           for (let i = 0; i < res.tags.length; i++){
             this.value_tag.push(res.tags[i].name);
           }
@@ -372,9 +411,11 @@ export default {
       this.value_tag = [];
       this.value_categories = [];
       this.id = '';
+      this.photo = '';
     },
     openCreate(){
       this.resetFeild();
+      this.photo = 'https://yesoffice.com.vn/wp-content/themes/zw-theme//assets/images/default.jpg';
       this.title_modal = 'Create Post';
       this.createOrUpdate = 'create';
       this.$refs['create'].show();
@@ -402,12 +443,21 @@ export default {
           }
         }
       });
-      var params = updatePost({
-        title: this.title,
-        body: this.body,
-        categories: listCategoriesClone,
-        tags: listTagClone,
-      }, this.id);
+      const formData = new FormData();
+      if (document.getElementById('pic_avatar').files[0] !== undefined){
+        formData.append('picture', document.getElementById('pic_avatar').files[0]);
+      }
+      formData.append('title', this.title);
+      formData.append('body', this.body);
+      formData.append('categories', listCategoriesClone);
+      formData.append('tags', listTagClone);
+      for (let i = 0; i < listTagClone.length; i++) {
+        formData.append('tags' + '[' + i + ']', parseInt(listTagClone[i]));
+      }
+      for (let i = 0; i < listCategoriesClone.length; i++) {
+        formData.append('categories' + '[' + i + ']', parseInt(listCategoriesClone[i]));
+      }
+      var params = updatePost(formData, this.id);
       params.then(() => {
         this.resetFeild();
         this.getListPost();
@@ -439,12 +489,15 @@ export default {
           }
         }
       });
-      await createPost({
-        title: this.title,
-        body: this.body,
-        categories: listCategoriesClone,
-        tags: listTagClone,
-      })
+      const formData = new FormData();
+      if (document.getElementById('pic_avatar').files[0] !== undefined){
+        formData.append('picture', document.getElementById('pic_avatar').files[0]);
+      }
+      formData.append('title', this.title);
+      formData.append('body', this.body);
+      formData.append('categories', listCategoriesClone);
+      formData.append('tags', listTagClone);
+      await createPost(formData)
         .then(() => {
           this.getListTag();
           this.$refs['create'].hide();
@@ -500,5 +553,30 @@ export default {
     justify-content: center;
     vertical-align: middle;
     margin-top: 20px;
+  }
+.btnInputAvatar{
+    border: none;
+    font-weight: 500;
+    border-radius: 4px;
+    font-size: 20px;
+    left: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.btnInputAvatar button {
+    margin-left: 0;
+    margin-right: 0;
+}
+  .inputAvatar{
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    width: 20%;
+    height: 60px
+  }
+  .photo_preview{
+    width: 100%;
   }
 </style>
