@@ -131,34 +131,57 @@
       <br>
       <!-- footer -->
       <footer>
-        <b-navbar toggleable type="dark" variant="dark">
+        <div class="foot">
           <b-row>
-            <b-col>
-              <!-- insert map -->
-              <!-- using a responsive iframe -->
-              <div class="responsive-map-container">
-                <!-- place the iframe code between here... -->
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d931.1784728038649!2d105.78082212925166!3d21.004102901120508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x31345352cf1903af%3A0xb4800e4a2b41a6eb!2zTmfDtSAyIMSQ4bqhaSBM4buZIFRoxINuZyBMb25nLCBN4buFIFRyw6wsIE5hbSBU4burIExpw6ptLCBIw6AgTuG7mWksIFZp4buHdCBOYW0!3m2!1d21.004295!2d105.7815727!4m5!1s0x31345352c785f743%3A0x3bea251b5eca4ad0!2zQ8ahIFPhu58gQ8ahIEtow60gWHXDom4gQ2hpLCAyMCDEkENUMDgsIE3hu4UgVHLDrCwgVOG7qyBMacOqbSwgSMOgIE7hu5lpLCBWaeG7h3QgTmFt!3m2!1d21.0039083!2d105.78119509999999!5e0!3m2!1svi!2s!4v1619711772503!5m2!1svi!2s"
-                  width="425"
-                  height="350"
-                  frameborder="0"
-                  scrolling="no"
-                  marginheight="0"
-                  marginwidth="0"
-                  loading="lazy"
-                  class="iframe"
-                />
-                <!-- ... and here -->
-              </div>
-              <!-- /insert map -->
+            <b-col cols="4">
+              <center>
+                <!-- insert map -->
+                <!-- using a responsive iframe -->
+                <div class="responsive-map-container">
+                  <!-- place the iframe code between here... -->
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d931.1784728038649!2d105.78082212925166!3d21.004102901120508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x31345352cf1903af%3A0xb4800e4a2b41a6eb!2zTmfDtSAyIMSQ4bqhaSBM4buZIFRoxINuZyBMb25nLCBN4buFIFRyw6wsIE5hbSBU4burIExpw6ptLCBIw6AgTuG7mWksIFZp4buHdCBOYW0!3m2!1d21.004295!2d105.7815727!4m5!1s0x31345352c785f743%3A0x3bea251b5eca4ad0!2zQ8ahIFPhu58gQ8ahIEtow60gWHXDom4gQ2hpLCAyMCDEkENUMDgsIE3hu4UgVHLDrCwgVOG7qyBMacOqbSwgSMOgIE7hu5lpLCBWaeG7h3QgTmFt!3m2!1d21.0039083!2d105.78119509999999!5e0!3m2!1svi!2s!4v1619711772503!5m2!1svi!2s"
+                    width="425"
+                    height="350"
+                    frameborder="0"
+                    scrolling="no"
+                    marginheight="0"
+                    marginwidth="0"
+                    loading="lazy"
+                    class="iframe"
+                  />
+                  <!-- ... and here -->
+                </div>
+                <!-- /insert map -->
+              </center>
             </b-col>
-            <b-col>
-              Follow me
+            <b-col cols="4">
+              <center>
+                <div class="responsive-map-container">
+                  <b-img thumbnail fluid src="https://picsum.photos/250/250/?image=54" alt="Image 1" />
+                </div>
+              </center>
+            </b-col>
+            <b-col cols="4">
+              <div class="responsive-map-container">
+                <b-card header="Card with list group">
+                  <b-list-group>
+                    <b-list-group-item href="#" variant="dark">Cras justo odio</b-list-group-item>
+                    <b-list-group-item href="#" variant="dark">Dapibus ac facilisis in</b-list-group-item>
+                    <b-list-group-item href="#" variant="dark">Vestibulum at eros</b-list-group-item>
+                  </b-list-group>
+
+                  <p class="card-text mt-2">
+                    Quis magna Lorem anim amet ipsum do mollit sit cillum voluptate ex nulla tempor. Laborum
+                    consequat non elit enim exercitation cillum aliqua consequat id aliqua. Esse ex consectetur
+                    mollit voluptate est in duis laboris ad sit ipsum anim Lorem.
+                  </p>
+                </b-card>
+              </div>
+
             </b-col>
           </b-row>
-
-        </b-navbar>
+        </div>
       </footer>
     </b-aspect>
     <b-modal
@@ -277,5 +300,9 @@ img.card-img-left{
   padding-top: 30px;
   height: 0;
   overflow: hidden;
+}
+.foot{
+  background-color: #343a40;
+  padding: 5px;
 }
 </style>
