@@ -135,6 +135,10 @@ export default {
     this.getListTag();
   },
   methods: {
+    resetFeild(){
+      this.tag.id = '';
+      this.tag.name = '';
+    },
     async getListTag(){
       await getTag()
         .then((res) => {
@@ -153,6 +157,7 @@ export default {
       this.tag.name = item.name;
     },
     openCreatePopUp(){
+      this.resetFeild();
       this.$refs['create'].show();
     },
     openDeletePopUp(value){
