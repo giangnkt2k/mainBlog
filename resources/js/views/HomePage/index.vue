@@ -2,7 +2,7 @@
   <div>
     <b-aspect aspect="16:9">
       <div>
-        <b-navbar toggleable="lg" type="light">
+        <b-navbar toggleable="lg" type="dark" variant="dark">
           <b-navbar-brand href="#">GiangNKT</b-navbar-brand>
 
           <b-navbar-toggle target="nav-collapse" />
@@ -66,18 +66,24 @@
               align="center"
             >
               <div v-for="item in posts" :key="item.id">
-                <b-card :img-src="item.picture" img-alt="Card image" img-left style="width:100%;">
-                  <b-list-group-item href="#" class="flex-column align-items-start">
-                    <div class="d-flex w-100 justify-content-between">
-                      <h5 class="mb-1">{{ item.title }} </h5>
-                      <small>3 days ago</small>
-                    </div>
 
-                    <p class="mb-1 body_post" v-html="item.body" />
-
-                    <small>See Detail</small>
-                  </b-list-group-item>
-                </b-card>
+                <b-list-group-item href="#" class="flex-column align-items-start">
+                  <b-row>
+                    <b-col cols="3">
+                      <b-img thumbnail fluid :src="item.picture" :alt="item.title" />
+                    </b-col>
+                    <b-col cols="9">
+                      <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{ item.title }} </h5>
+                        <small>3 days ago</small>
+                      </div>
+                      <p class="mb-1 body_post" v-html="item.body" />
+                      <b-button size="sm" class="mr-2" @click="openDetailPopUp(item.id)">
+                        See Detail
+                      </b-button>
+                    </b-col>
+                  </b-row>
+                </b-list-group-item>
 
                 <br>
               </div>
@@ -122,29 +128,58 @@
           </b-card-group>
         </b-col>
       </b-row>
+      <br>
       <!-- footer -->
       <footer>
         <b-navbar toggleable type="dark" variant="dark">
-          <b-navbar-brand href="#">GiangNKT</b-navbar-brand>
-          <!-- insert map -->
-          <!-- using a responsive iframe -->
-          <div class="responsive-map-container">
-            <!-- place the iframe code between here... -->
-            <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d931.1784728038649!2d105.78082212925166!3d21.004102901120508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x31345352cf1903af%3A0xb4800e4a2b41a6eb!2zTmfDtSAyIMSQ4bqhaSBM4buZIFRoxINuZyBMb25nLCBN4buFIFRyw6wsIE5hbSBU4burIExpw6ptLCBIw6AgTuG7mWksIFZp4buHdCBOYW0!3m2!1d21.004295!2d105.7815727!4m5!1s0x31345352c785f743%3A0x3bea251b5eca4ad0!2zQ8ahIFPhu58gQ8ahIEtow60gWHXDom4gQ2hpLCAyMCDEkENUMDgsIE3hu4UgVHLDrCwgVOG7qyBMacOqbSwgSMOgIE7hu5lpLCBWaeG7h3QgTmFt!3m2!1d21.0039083!2d105.78119509999999!5e0!3m2!1svi!2s!4v1619711772503!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" />
-            <!-- ... and here -->
-          </div>
-          <!-- /insert map -->
+          <b-row>
+            <b-col>
+              <!-- insert map -->
+              <!-- using a responsive iframe -->
+              <div class="responsive-map-container">
+                <!-- place the iframe code between here... -->
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d931.1784728038649!2d105.78082212925166!3d21.004102901120508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x31345352cf1903af%3A0xb4800e4a2b41a6eb!2zTmfDtSAyIMSQ4bqhaSBM4buZIFRoxINuZyBMb25nLCBN4buFIFRyw6wsIE5hbSBU4burIExpw6ptLCBIw6AgTuG7mWksIFZp4buHdCBOYW0!3m2!1d21.004295!2d105.7815727!4m5!1s0x31345352c785f743%3A0x3bea251b5eca4ad0!2zQ8ahIFPhu58gQ8ahIEtow60gWHXDom4gQ2hpLCAyMCDEkENUMDgsIE3hu4UgVHLDrCwgVOG7qyBMacOqbSwgSMOgIE7hu5lpLCBWaeG7h3QgTmFt!3m2!1d21.0039083!2d105.78119509999999!5e0!3m2!1svi!2s!4v1619711772503!5m2!1svi!2s"
+                  width="425"
+                  height="350"
+                  frameborder="0"
+                  scrolling="no"
+                  marginheight="0"
+                  marginwidth="0"
+                  loading="lazy"
+                  class="iframe"
+                />
+                <!-- ... and here -->
+              </div>
+              <!-- /insert map -->
+            </b-col>
+            <b-col>
+              Follow me
+            </b-col>
+          </b-row>
+
         </b-navbar>
       </footer>
-
     </b-aspect>
+    <b-modal
+      ref="singlePost"
+      hide-footer
+      :title="title_modal"
+      size="xl"
+    >
+      <h3>{{ post.title }}</h3>
+      <div>
+        <b-img :src="post.picture" fluid alt="Responsive image" />
+      </div>
+      <div v-html="post.body" />
+    </b-modal>
   </div>
 </template>
 
 <script>
 import { getCategories } from '@/api/categories_API';
 import { getTag } from '@/api/tags_API';
-import { getPost } from '@/api/post_API';
+import { getPost, getOnePost } from '@/api/post_API';
 export default {
   data() {
     return {
@@ -156,6 +191,12 @@ export default {
         currentPage: 1,
         total_row: 10,
       },
+      post: {
+        title: '',
+        picture: '',
+        body: '',
+      },
+      title_modal: '',
     };
   },
   created(){
@@ -189,18 +230,27 @@ export default {
           this.pagination.total_row = res.meta.total;
         });
     },
+    async openDetailPopUp(item){
+      await getOnePost(item)
+        .then((res) => {
+          this.post.title = res.title;
+          this.post.picture = res.picture;
+          this.post.body = res.body;
+        });
+      this.$refs['singlePost'].show();
+    },
   },
 };
 </script>
 
 <style>
-@media only screen and (max-width: 2560px){
+@media only screen and (max-width: 3000px){
   .body_post{
   max-width: 1200px;
   overflow: hidden;
   text-overflow: ellipsis;
   line-height: 25px;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 5;
   height: 75px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -212,7 +262,7 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;
   line-height: 25px;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 5;
   height: 75px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -220,5 +270,12 @@ export default {
 }
 img.card-img-left{
   width: 40%;
+}
+.responsive-map-container{
+  position: relative;
+  padding-bottom: 65.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
 }
 </style>
