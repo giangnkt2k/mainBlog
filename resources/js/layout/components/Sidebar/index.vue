@@ -1,5 +1,5 @@
 <template>
-  <div id="sidebar-wrapper">
+  <div v-if="$store.getters.roles[0] !=='user' || $store.getters.roles[0] === ''" id="sidebar-wrapper">
     <ul class="sidebar-nav">
       <li class="sidebar-title">
         {{ title }}

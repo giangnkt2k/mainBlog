@@ -28,6 +28,9 @@ export default {
       toggleBool: false,
     };
   },
+  created(){
+    this.toggleMenu();
+  },
   methods: {
     toggleMenu(){
       this.toggleBool = !this.toggleBool;

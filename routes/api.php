@@ -29,18 +29,8 @@ Route::namespace('Api')->group(function() {
     });
     // categories
     Route::apiResource('/categories','CategoriesController');
-    // Route::get('/categories','CategoriesController@index');
-    // Route::put('/categories','CategoriesController@update');
-    // Route::delete('/categories','CategoriesController@destroy');
     // tags
     Route::apiResource('/tags','TagsController');
-    // Route::get('/tags','TagsController@index');
-    // Route::put('/tags','TagsController@update');
-    // Route::delete('/tags','TagsController@destroy');
     //post
     Route::apiResource('/post','PostController');
-    // Route::get('/post','PostController@index');
-    // Route::put('/post','PostController@update');
-    // Route::delete('/post/{id}','PostController@destroy');
-    // Route::get('/post/{id}','PostController@show');
 });

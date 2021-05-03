@@ -87,7 +87,7 @@ export default {
           .then(() => {
             this.$store.dispatch('user/postLogin', this.loginForm)
               .then(() => {
-                this.$router.push({ path: '/dashboard/index', query: {}}, onAbort => {});
+                this.$router.push({ path: '/homepage', query: {}}, onAbort => {});
               });
           });
       } else {

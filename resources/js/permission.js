@@ -4,7 +4,7 @@ import { MakeToast } from '@/utils/toast_message';
 import { isLogged } from '@/utils/auth';
 import getPageTitle from '@/utils/get-page-title';
 
-const whiteList = ['/login'];
+const whiteList = ['/login', '/', '/homepage'];
 
 router.beforeEach(async(to, from, next) => {
   document.title = getPageTitle(to.meta.title);
@@ -38,7 +38,9 @@ router.beforeEach(async(to, from, next) => {
       }
     }
   } else {
-    if (whiteList.indexOf(to.matched[0] ? to.matched[0].path : '') !== -1) {
+    if (to.matched[0].path === '/hompage') {
+      next();
+    } else if (whiteList.indexOf(to.matched[0] ? to.matched[0].path : '') !== -1) {
       next();
     } else {
       next(`/login?redirect=${to.path}`);

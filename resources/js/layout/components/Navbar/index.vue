@@ -1,39 +1,76 @@
 <template>
-  <b-navbar toggleable="lg" type="dark">
+  <div>
+    <b-navbar v-if="$store.getters.roles[0] !=='user' && $store.getters.roles.length > 0 " toggleable="lg" type="dark">
 
-    <b-navbar-brand @click.prevent.stop="$emit('toggle')">
-      <i id="toggle-menu" class="icofont-navigation-menu" />
-    </b-navbar-brand>
+      <b-navbar-brand @click.prevent.stop="$emit('toggle')">
+        <i id="toggle-menu" class="icofont-navigation-menu" />
+      </b-navbar-brand>
 
-    <b-navbar-toggle target="nav-collapse">
-      <template #default="{ expanded }">
-        <b-icon v-if="expanded" icon="chevron-bar-up" />
-        <b-icon v-else icon="chevron-bar-down" />
-      </template>
-    </b-navbar-toggle>
+      <b-navbar-toggle target="nav-collapse">
+        <template #default="{ expanded }">
+          <b-icon v-if="expanded" icon="chevron-bar-up" />
+          <b-icon v-else icon="chevron-bar-down" />
+        </template>
+      </b-navbar-toggle>
 
-    <b-collapse id="nav-collapse" is-nav>
-      <b-navbar-nav id="text-name">
-        {{ $t(title) }}
-      </b-navbar-nav>
+      <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav id="text-name">
+          {{ $t(title) }}
+        </b-navbar-nav>
 
-      <b-navbar-nav class="ml-auto">
+        <b-navbar-nav class="ml-auto">
 
-        <LangSelector class="m-2" />
+          <LangSelector class="m-2" />
 
-        <b-dropdown text="Block Level Dropdown" block class="m-2">
-          <template #button-content>
-            <b-icon icon="person-circle" font-scale="1.0" class="icon-user" /><span>{{ $t('navbar.usersettings') }}</span>
-          </template>
-          <b-dropdown-item class="text" :disabled="routePath==='/dashboard/profile'" @click="$router.push('/dashboard/profile')">
-            {{ $t('profile.title') }}
-          </b-dropdown-item>
-          <b-dropdown-item class="text">Settings</b-dropdown-item>
-          <b-dropdown-item class="text" @click="logout">Logout</b-dropdown-item>
-        </b-dropdown>
-      </b-navbar-nav>
-    </b-collapse>
-  </b-navbar>
+          <b-dropdown text="Block Level Dropdown" block class="m-2">
+            <template #button-content>
+              <b-icon icon="person-circle" font-scale="1.0" class="icon-user" /><span>{{ $t('navbar.usersettings') }}</span>
+            </template>
+            <b-dropdown-item class="text" :disabled="routePath==='/dashboard/profile'" @click="$router.push('/dashboard/profile')">
+              {{ $t('profile.title') }}
+            </b-dropdown-item>
+            <b-dropdown-item class="text">Settings</b-dropdown-item>
+            <b-dropdown-item class="text" @click="logout">Logout</b-dropdown-item>
+          </b-dropdown>
+        </b-navbar-nav>
+      </b-collapse>
+    </b-navbar>
+    <div v-if="$store.getters.roles[0] !=='admin'">
+      <div>
+        <b-navbar toggleable="lg" type="dark" variant="dark">
+          <b-navbar-brand href="#">GiangNKT</b-navbar-brand>
+
+          <b-navbar-toggle target="nav-collapse" />
+
+          <b-collapse id="nav-collapse" is-nav>
+            <b-navbar-nav>
+              <b-nav-item href="#">Portfolio</b-nav-item>
+              <b-nav-item href="#">Post</b-nav-item>
+            </b-navbar-nav>
+
+            <!-- Right aligned nav items -->
+            <b-navbar-nav class="ml-auto">
+              <b-nav-form>
+                <b-form-input size="sm" class="mr-sm-2" placeholder="Search" />
+                <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
+              </b-nav-form>
+
+              <b-nav-item-dropdown right>
+                <!-- Using 'button-content' slot -->
+                <template #button-content>
+                  <em>User</em>
+                </template>
+                <b-dropdown-item href="#">Profile</b-dropdown-item>
+                <b-dropdown-item @click="login">Sign In</b-dropdown-item>
+                <b-dropdown-item @click="logout">Sign Out</b-dropdown-item>
+              </b-nav-item-dropdown>
+            </b-navbar-nav>
+          </b-collapse>
+        </b-navbar>
+      </div>
+    </div>
+  </div>
+
 </template>
 
 <script>
@@ -47,6 +84,7 @@ export default {
   data() {
     return {
       title: this.$route.meta.title,
+      ok: true,
     };
   },
   computed: {
@@ -65,6 +103,10 @@ export default {
   methods: {
     async logout() {
       await this.$store.dispatch('user/logout');
+      this.$router.push(`/`);
+    },
+    async login() {
+      await this.$store.dispatch('user/login');
       this.$router.push(`/login?redirect=${this.$route.fullPath}`);
     },
   },

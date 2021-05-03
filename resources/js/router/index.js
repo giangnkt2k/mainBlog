@@ -44,12 +44,11 @@ export const constantRoutes = [
   },
   {
     path: '/',
-    name: 'Dashboard',
+    name: 'Homepage',
     redirect: '/homepage',
     meta: {
       title: 'routes.dashboard',
       icon: 'icofont-dashboard-web',
-      permissions: ['view menu administrator'],
     },
   },
   {
