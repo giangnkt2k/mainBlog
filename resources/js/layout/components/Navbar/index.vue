@@ -37,14 +37,14 @@
     </b-navbar>
     <div v-if="$store.getters.roles[0] !=='admin'">
       <div>
-        <b-navbar toggleable="lg" type="dark" variant="dark">
+        <b-navbar toggleable="lg" type="dark" variant="dark" fixed="top">
           <b-navbar-brand href="#">GiangNKT</b-navbar-brand>
 
           <b-navbar-toggle target="nav-collapse" />
 
           <b-collapse id="nav-collapse" is-nav>
             <b-navbar-nav>
-              <b-nav-item href="#">Portfolio</b-nav-item>
+              <b-nav-item @click="$router.push('/portfolio')">Portfolio</b-nav-item>
               <b-nav-item href="#">Post</b-nav-item>
             </b-navbar-nav>
 

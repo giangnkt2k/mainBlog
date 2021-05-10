@@ -69,6 +69,22 @@ export const constantRoutes = [
     ],
   },
   {
+    path: '/portfolio',
+    name: 'Portfolio',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        alias: '/portfolio',
+        component: () => import('@/views/Portfolio/index'),
+        meta: {
+          title: 'routes.portfolio',
+          icon: 'icofont-lens',
+        },
+      },
+    ],
+  },
+  {
     path: '/categories',
     name: 'Categories',
     component: Layout,

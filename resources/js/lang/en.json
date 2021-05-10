@@ -11,7 +11,8 @@
         "tag": "Tag",
         "categories": "Categories",
         "post": "Post",
-        "homePage": "Home Page"
+        "homePage": "Home Page",
+        "portfolio": "Portfolio"
     },
     "navbar": {
         "settings": "Settings",

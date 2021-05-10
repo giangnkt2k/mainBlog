@@ -7,8 +7,7 @@
           style="text-shadow: 0px 0px 2px #000"
           fade
           indicators
-          img-width="1024"
-          img-height="480"
+          controls
         >
           <b-carousel-slide
             img-src="https://lh3.googleusercontent.com/YOvnW0skqeW_OexOuSNIgf_fgyMo4wCzHPosN_Fv8_me5GpzdiLOMH3GQdNGTcQPV5MI7mgEimXQpsDWIM97h2rVbVjqohzy0Jb0Fxlqdmp7NThQXqNo8MrUPvFxPC7PWgNL8s4bBKcRdrIgCUGtszZ0trGnexYAqUbF4FHGluQeDwNYRmAtGbNtbtJTFSzY4lwFma5_MfqrGN_CZ9AZOok0rpZMXA0F99FlOcQdoStfvoBOO8c5ABkfP6BTRYsYrzb_0TrdTzMl6Ov-uCKRXV7ChrNZRLA8Ii1aWubGf0PSxwHj8EK6PbcsfHky3SNpgHN7qJLT9jZCXzu16h3XdTTIkF6JsOUmhZ8YqKPfI4aq2rDuGpRHTu8bg5pj5V5vI0HtWuvVAPzcdDSsCPTM-DiUXcshJQcZWh6tbQMwSJkaOmQ47CCcpZ18FZeM3A-8brEU7xMeB9R7KtLzKicoC8XfM3pMtRMw5ceQD3-vJ69upqXd3M4ztSsBxq_7L_znWkQhX09VHu_miX6DnjjAfa9mt57JwPhKiVH4A1ziMWWillW5IWR3mIxb48QGCzDkLj3DLvebQuGo3MaIoMP4lGvhorgVH9MZYFOeLMJeK3G3Jpx-5kEcP9fFUg9N3PJ0KEMqL8URVFx7emm4t08O5gXU_82jImbd8S_bxbMy9ekHTx8DTCfjI2rIxABmmQ39C_fEvCmrBcPpXH4eprLBoiQ=w1908-h1272-no?authuser=0"
