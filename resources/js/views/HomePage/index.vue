@@ -1,6 +1,25 @@
 <template>
   <div class="hp_main">
     <b-aspect aspect="16:9" class="hp_main">
+      <!-- open -->
+      <div>
+        <b-jumbotron text-variant="white" border-variant="dark" class="opening">
+          <template #header>BootstrapVue</template>
+
+          <template #lead>
+            This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
+            featured content or information.
+          </template>
+
+          <hr class="my-4">
+
+          <p>
+            It uses utility classes for typography and spacing to space content out within the larger
+            container.
+          </p>
+          <div class="overlay" />
+        </b-jumbotron>
+      </div>
       <div>
         <b-carousel
           id="carousel-fade"
@@ -158,13 +177,13 @@
     <b-modal
       ref="singlePost"
       hide-footer
-      :title="title_modal"
+      :title="post.title"
       size="xl"
     >
-      <h3>{{ post.title }}</h3>
       <div>
         <b-img :src="post.picture" fluid alt="Responsive image" />
       </div>
+      <br>
       <div v-html="post.body" />
     </b-modal>
   </div>
@@ -282,5 +301,26 @@ img.img-fluid.w-100.d-block{
 }
 .hp_main{
   margin: 0 auto;
+}
+.overlay{
+  background: #7d71d3 ;
+  z-index: -1;
+  opacity: 1;
+  width: 100%;
+  top: 0;
+}
+.opening .overlay{
+  position:absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+
+}
+.opening ::after{
+  content: "";
+  display: block;
+  background: url('http://dexam-vue.ui-lib.com/img/Bg_08.cbbf6fd1.png') bottom no-repeat;
+  background-size: cover;
 }
 </style>
