@@ -3,7 +3,7 @@
     <Sidebar />
     <div id="page-content-wrapper">
       <Navbar @toggle="toggleMenu()" />
-      <div class="container-fluid dashboard">
+      <div class="dashboard">
         <AppMain />
       </div>
     </div>

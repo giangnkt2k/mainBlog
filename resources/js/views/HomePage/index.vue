@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <b-aspect aspect="16:9">
+  <div class="hp_main">
+    <b-aspect aspect="16:9" class="hp_main">
       <div>
         <b-carousel
           id="carousel-fade"
@@ -12,6 +12,10 @@
           <b-carousel-slide
             img-src="https://lh3.googleusercontent.com/YOvnW0skqeW_OexOuSNIgf_fgyMo4wCzHPosN_Fv8_me5GpzdiLOMH3GQdNGTcQPV5MI7mgEimXQpsDWIM97h2rVbVjqohzy0Jb0Fxlqdmp7NThQXqNo8MrUPvFxPC7PWgNL8s4bBKcRdrIgCUGtszZ0trGnexYAqUbF4FHGluQeDwNYRmAtGbNtbtJTFSzY4lwFma5_MfqrGN_CZ9AZOok0rpZMXA0F99FlOcQdoStfvoBOO8c5ABkfP6BTRYsYrzb_0TrdTzMl6Ov-uCKRXV7ChrNZRLA8Ii1aWubGf0PSxwHj8EK6PbcsfHky3SNpgHN7qJLT9jZCXzu16h3XdTTIkF6JsOUmhZ8YqKPfI4aq2rDuGpRHTu8bg5pj5V5vI0HtWuvVAPzcdDSsCPTM-DiUXcshJQcZWh6tbQMwSJkaOmQ47CCcpZ18FZeM3A-8brEU7xMeB9R7KtLzKicoC8XfM3pMtRMw5ceQD3-vJ69upqXd3M4ztSsBxq_7L_znWkQhX09VHu_miX6DnjjAfa9mt57JwPhKiVH4A1ziMWWillW5IWR3mIxb48QGCzDkLj3DLvebQuGo3MaIoMP4lGvhorgVH9MZYFOeLMJeK3G3Jpx-5kEcP9fFUg9N3PJ0KEMqL8URVFx7emm4t08O5gXU_82jImbd8S_bxbMy9ekHTx8DTCfjI2rIxABmmQ39C_fEvCmrBcPpXH4eprLBoiQ=w1908-h1272-no?authuser=0"
           />
+          <div class="carousel-caption d-none d-md-block">
+            <h5>First slide label</h5>
+            <p>Some representative placeholder content for the first slide.</p>
+          </div>
           <b-carousel-slide
             img-src="https://lh3.googleusercontent.com/eKTE9uIt8m7HKHhdXCCM-lW2K6VdXdykARnlXYBBxo3bH5bwCFRotS3_DfgNZm3Ada-q7-wRfEeVrnd8eUk49ahgBxDEvxVFLnjBq2i5FVoVBuzTOQ51J-ThDWGhGR4piyYEGEfuPt1A3mw9Ou89kLbotRKvjXnQ-VCY-ymr2fCBlu-aZ2DQltUGYwb-I_gXskx9HvzLWIGVvY-Gx5lUOh3SwR0Qp-6zECrOlavqiotIV27lhAyNNJmHj22Aw7W_RcjTNHTNfgh37No-kLFCnmL-UsFKHIeNuN7segISaL5_T2T2DICNhKQ0jRQdvCV6y4CjKqbQjryZT3q0f7WB6LWgfFyp8qVMzfAxO2_c4l97VrFdA1dh9nxRGxt1Pn2_cDM6B6oR5kseywq5EaEImZHzgjZncGAMtC4cCj8lHlBO2qswz4EWdbgC7wqNELsgEwA-UT2VvXC-IoXqXKE1RlaesucUEWtkMcIwePmQjYu3CGVi8CgKAeJWh4-nIG31W9opZIs88NqVthVLr3OJemI033EVnBKUQ43cBVsDPJyG5w1ZMpSC3m-EFQpAnu9DVFW2dNQiWKkFUZEdky82ipFtPm3E4yOPh2gjeNTFXAIC9fnwA1znFoOqv0TiLcEnxvnvhwQOXDI7i25NUHLk4XQNqcByC5W3oo4w0DUnhuW5MecevK4kzGhBHLITIRV2JaVLu2c2zMuLfH2Aka4PpLg=w1908-h1272-no?authuser=0"
           />
@@ -261,6 +265,10 @@ export default {
 img.card-img-left{
   width: 40%;
 }
+img.img-fluid.w-100.d-block{
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+}
 .responsive-map-container{
   position: relative;
   padding-bottom: 65.25%;
@@ -271,5 +279,8 @@ img.card-img-left{
 .foot{
   background-color: #343a40;
   padding: 5px;
+}
+.hp_main{
+  margin: 0 auto;
 }
 </style>

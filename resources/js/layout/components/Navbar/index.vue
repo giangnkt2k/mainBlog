@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-navbar v-if="$store.getters.roles[0] !=='user' && $store.getters.roles.length > 0 " toggleable="lg" type="dark">
+    <b-navbar v-if="$store.getters.roles[0] !=='user' && $store.getters.roles.length > 0 " toggleable="lg">
 
       <b-navbar-brand @click.prevent.stop="$emit('toggle')">
         <i id="toggle-menu" class="icofont-navigation-menu" />
@@ -36,38 +36,32 @@
       </b-collapse>
     </b-navbar>
     <div v-if="$store.getters.roles[0] !=='admin'">
-      <div>
-        <b-navbar toggleable="lg" type="dark" variant="dark" fixed="top">
-          <b-navbar-brand href="#">GiangNKT</b-navbar-brand>
+      <b-navbar toggleable="lg" fixed="top" class="navUser" type="dark">
+        <b-navbar-brand href="#">GiangNKT</b-navbar-brand>
 
-          <b-navbar-toggle target="nav-collapse" />
+        <b-navbar-toggle target="nav-collapse" />
 
-          <b-collapse id="nav-collapse" is-nav>
-            <b-navbar-nav>
-              <b-nav-item @click="$router.push('/portfolio')">Portfolio</b-nav-item>
-              <b-nav-item href="#">Post</b-nav-item>
-            </b-navbar-nav>
+        <b-collapse id="nav-collapse" is-nav>
+          <b-navbar-nav>
+            <b-nav-item @click="$router.push('/portfolio')">Portfolio</b-nav-item>
+            <b-nav-item href="#">Post</b-nav-item>
+          </b-navbar-nav>
 
-            <!-- Right aligned nav items -->
-            <b-navbar-nav class="ml-auto">
-              <b-nav-form>
-                <b-form-input size="sm" class="mr-sm-2" placeholder="Search" />
-                <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
-              </b-nav-form>
+          <!-- Right aligned nav items -->
+          <b-navbar-nav class="ml-auto">
 
-              <b-nav-item-dropdown right>
-                <!-- Using 'button-content' slot -->
-                <template #button-content>
-                  <em>User</em>
-                </template>
-                <b-dropdown-item href="#">Profile</b-dropdown-item>
-                <b-dropdown-item @click="login">Sign In</b-dropdown-item>
-                <b-dropdown-item @click="logout">Sign Out</b-dropdown-item>
-              </b-nav-item-dropdown>
-            </b-navbar-nav>
-          </b-collapse>
-        </b-navbar>
-      </div>
+            <b-nav-item-dropdown right>
+              <!-- Using 'button-content' slot -->
+              <template #button-content>
+                <em>User</em>
+              </template>
+              <b-dropdown-item href="#">Profile</b-dropdown-item>
+              <b-dropdown-item @click="login">Sign In</b-dropdown-item>
+              <b-dropdown-item @click="logout">Sign Out</b-dropdown-item>
+            </b-nav-item-dropdown>
+          </b-navbar-nav>
+        </b-collapse>
+      </b-navbar>
     </div>
   </div>
 
@@ -122,7 +116,12 @@ export default {
     position: sticky;
     z-index: 999;
 }
-
+.navUser{
+  background: #53515105;
+  background-color: #343a4008 !important;
+  margin: 0 auto;
+  border: none !important;
+}
 .navbar .nav-link{
     color: #5b6e88 !important;
 }

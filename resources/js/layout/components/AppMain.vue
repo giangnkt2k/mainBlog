@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid dashboard">
+  <div class="dashboard">
     <router-view :key="key" />
   </div>
 </template>
