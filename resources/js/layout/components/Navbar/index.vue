@@ -35,8 +35,9 @@
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
+    <!-- user -->
     <div v-if="$store.getters.roles[0] !=='admin'">
-      <b-navbar toggleable="lg" fixed="top" class="navUser" type="dark">
+      <b-navbar toggleable="lg" fixed="top" :class="navBarUser" class="main-header header-fixed-default" type="dark" @scroll="handleScroll">
         <b-navbar-brand href="#">GiangNKT</b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse" />
@@ -79,6 +80,7 @@ export default {
     return {
       title: this.$route.meta.title,
       ok: true,
+      navBarUser: 'navUser',
     };
   },
   computed: {
@@ -94,6 +96,12 @@ export default {
       this.title = this.$route.meta.title;
     },
   },
+  created(){
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  destroyed(){
+    window.removeEventListener('scroll', this.handleScroll);
+  },
   methods: {
     async logout() {
       await this.$store.dispatch('user/logout');
@@ -103,11 +111,24 @@ export default {
       await this.$store.dispatch('user/login');
       this.$router.push(`/login?redirect=${this.$route.fullPath}`);
     },
+    handleScroll(event) {
+      // console.log(event);navBarUser
+      if (window.scrollY > 1.9){
+        this.navBarUser = 'sticky';
+      } else {
+        this.navBarUser = 'navUser';
+      }
+    },
   },
 };
 </script>
 
 <style>
+body {
+    line-height: 1.5;
+    font-size: 15px;
+    color: #333;
+}
 .navbar{
     background-color: #fff;
     border-bottom: 1px solid #dee4ec;
@@ -116,11 +137,28 @@ export default {
     position: sticky;
     z-index: 999;
 }
+.sticky {
+  background-image: linear-gradient(-29deg,#616d86,#1f1c2c)!important;
+  z-index: 999;
+  border: hidden;
+  font-weight: 400;
+  width: 100%;
+  padding: 0px !important;
+
+  transition: all .5s ease-in-out;
+}
 .navUser{
   background: #53515105;
   background-color: #343a4008 !important;
   margin: 0 auto;
   border: none !important;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 22px 0;
+  transition: all .5s ease-in-out;
 }
 .navbar .nav-link{
     color: #5b6e88 !important;
