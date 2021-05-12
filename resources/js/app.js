@@ -9,6 +9,8 @@ import store from '@/store';
 import '@/permission';
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 import CKeditor from 'ckeditor4-vue';
+// eslint-disable-next-line no-unused-vars
+import 'gsap';
 import './assets/css/icofont.min.css';
 import './assets/css/style.css';
 import 'bootstrap/dist/css/bootstrap.css';

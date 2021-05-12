@@ -3,22 +3,16 @@
     <b-aspect aspect="16:9" class="hp_main">
       <!-- open -->
       <div>
-        <b-jumbotron text-variant="white" border-variant="dark" class="opening">
-          <template #header>BootstrapVue</template>
-
-          <template #lead>
-            This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
-            featured content or information.
-          </template>
-
-          <hr class="my-4">
-
-          <p>
-            It uses utility classes for typography and spacing to space content out within the larger
-            container.
-          </p>
-          <div class="overlay" />
-        </b-jumbotron>
+        <div class="opening" @mousemove="move">
+          <b-row>
+            <b-col>
+              <h1>Welcome mina</h1>
+            </b-col>
+            <b-col>
+              <b-img src="http://dexam-vue.ui-lib.com/img/v3-header.635efe8e.svg" class="red" :style="{transform: transale}" style="height: 100%;" />
+            </b-col>
+          </b-row>
+        </div>
       </div>
       <div>
         <b-carousel
@@ -210,6 +204,9 @@ export default {
         body: '',
       },
       title_modal: '',
+      x: 0,
+      y: 0,
+      transale: '',
     };
   },
   created(){
@@ -218,6 +215,15 @@ export default {
     this.getListPost();
   },
   methods: {
+    move(e){
+      // this.changePosition();
+      this.transale = 'translate3d(' + -e.clientX * 0.1 + 'px,' + -e.clientY * 0.1 + 'px, 0px)';
+    },
+    // changePosition(){
+    //   const trans = 'translate3d(' + this.x + 'px,' + this.y + 'px, 0px);';
+    //   console.log(trans);
+    //   return trans;
+    // },
     async getListCategories(){
       await getCategories()
         .then((res) => {
@@ -302,25 +308,39 @@ img.img-fluid.w-100.d-block{
 .hp_main{
   margin: 0 auto;
 }
-.overlay{
-  background: #7d71d3 ;
-  z-index: -1;
-  opacity: 1;
-  width: 100%;
-  top: 0;
+.opening{
+  background-image: url('http://dexam-vue.ui-lib.com/img/Bg_08.cbbf6fd1.png');
+  padding: 20vh 0;
+  background-size: cover;
+  text-align: center;
+  font-size: 42px;
+  font-weight: 18px;
+  color: #fff;
 }
-.opening .overlay{
-  position:absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-
-}
-.opening ::after{
+.opening  ::after{
   content: "";
   display: block;
-  background: url('http://dexam-vue.ui-lib.com/img/Bg_08.cbbf6fd1.png') bottom no-repeat;
-  background-size: cover;
+  width: 100%;
+  height: 100%;
+  position:absolute;
+  top: 0;
+  left: 0;
+  background-color: #242425!important ;
+  z-index: -1  ;
 }
+.red{
+  width: 100%;
+  height: 100%;
+  /* background-image: url('http://dexam-vue.ui-lib.com/img/v3-header.635efe8e.svg'); */
+  /* transform: translate3d(-100px, 0.1px, 0px); */
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  display: block;
+  /* z-index: 3; */
+  overflow: hidden;
+}
+/* .red::after{
+ content: "";
+ position: relative;
+} */
 </style>
