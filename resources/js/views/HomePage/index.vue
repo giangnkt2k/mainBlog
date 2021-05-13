@@ -6,11 +6,7 @@
         <div class="opening" @mousemove="move">
           <b-row>
             <b-col>
-              <div class="typewriter">
-                <b-row>
-                  <b-col><h1>Welcome mina! Have a good time to Read</h1></b-col>
-                </b-row>
-              </div>
+              <h1>Welcome mina</h1>
             </b-col>
             <b-col>
               <b-img src="http://dexam-vue.ui-lib.com/img/v3-header.635efe8e.svg" class="red" :style="{transform: transale}" style="height: 100%;" />
@@ -18,30 +14,34 @@
           </b-row>
         </div>
       </div>
-      <section class="container pt-5 mt-4 mt-sm-0 pt-sm-6 pt-md-7 pb-lg-7">
-        <div>
-          <b-carousel
-            id="carousel-fade"
-            style="text-shadow: 0px 0px 2px #000"
-            fade
-            indicators
-            controls
-          >
-            <b-carousel-slide
-              img-src="https://lh3.googleusercontent.com/YOvnW0skqeW_OexOuSNIgf_fgyMo4wCzHPosN_Fv8_me5GpzdiLOMH3GQdNGTcQPV5MI7mgEimXQpsDWIM97h2rVbVjqohzy0Jb0Fxlqdmp7NThQXqNo8MrUPvFxPC7PWgNL8s4bBKcRdrIgCUGtszZ0trGnexYAqUbF4FHGluQeDwNYRmAtGbNtbtJTFSzY4lwFma5_MfqrGN_CZ9AZOok0rpZMXA0F99FlOcQdoStfvoBOO8c5ABkfP6BTRYsYrzb_0TrdTzMl6Ov-uCKRXV7ChrNZRLA8Ii1aWubGf0PSxwHj8EK6PbcsfHky3SNpgHN7qJLT9jZCXzu16h3XdTTIkF6JsOUmhZ8YqKPfI4aq2rDuGpRHTu8bg5pj5V5vI0HtWuvVAPzcdDSsCPTM-DiUXcshJQcZWh6tbQMwSJkaOmQ47CCcpZ18FZeM3A-8brEU7xMeB9R7KtLzKicoC8XfM3pMtRMw5ceQD3-vJ69upqXd3M4ztSsBxq_7L_znWkQhX09VHu_miX6DnjjAfa9mt57JwPhKiVH4A1ziMWWillW5IWR3mIxb48QGCzDkLj3DLvebQuGo3MaIoMP4lGvhorgVH9MZYFOeLMJeK3G3Jpx-5kEcP9fFUg9N3PJ0KEMqL8URVFx7emm4t08O5gXU_82jImbd8S_bxbMy9ekHTx8DTCfjI2rIxABmmQ39C_fEvCmrBcPpXH4eprLBoiQ=w1908-h1272-no?authuser=0"
-            />
-            <b-carousel-slide
-              img-src="https://lh3.googleusercontent.com/eKTE9uIt8m7HKHhdXCCM-lW2K6VdXdykARnlXYBBxo3bH5bwCFRotS3_DfgNZm3Ada-q7-wRfEeVrnd8eUk49ahgBxDEvxVFLnjBq2i5FVoVBuzTOQ51J-ThDWGhGR4piyYEGEfuPt1A3mw9Ou89kLbotRKvjXnQ-VCY-ymr2fCBlu-aZ2DQltUGYwb-I_gXskx9HvzLWIGVvY-Gx5lUOh3SwR0Qp-6zECrOlavqiotIV27lhAyNNJmHj22Aw7W_RcjTNHTNfgh37No-kLFCnmL-UsFKHIeNuN7segISaL5_T2T2DICNhKQ0jRQdvCV6y4CjKqbQjryZT3q0f7WB6LWgfFyp8qVMzfAxO2_c4l97VrFdA1dh9nxRGxt1Pn2_cDM6B6oR5kseywq5EaEImZHzgjZncGAMtC4cCj8lHlBO2qswz4EWdbgC7wqNELsgEwA-UT2VvXC-IoXqXKE1RlaesucUEWtkMcIwePmQjYu3CGVi8CgKAeJWh4-nIG31W9opZIs88NqVthVLr3OJemI033EVnBKUQ43cBVsDPJyG5w1ZMpSC3m-EFQpAnu9DVFW2dNQiWKkFUZEdky82ipFtPm3E4yOPh2gjeNTFXAIC9fnwA1znFoOqv0TiLcEnxvnvhwQOXDI7i25NUHLk4XQNqcByC5W3oo4w0DUnhuW5MecevK4kzGhBHLITIRV2JaVLu2c2zMuLfH2Aka4PpLg=w1908-h1272-no?authuser=0"
-            />
-            <b-carousel-slide
-              img-src="https://lh3.googleusercontent.com/MHJA8J_vrQWfdYT8lsM8Ft5HJQpYQ0WGWMG1RrPzjvIl8XJVPG8Trnc2eNDohFEYmSmBaJVZM3gQGarfjg2NBY955un1Vkw6T2ceJ915rjhNieJZ1MzxtYlVhakHQ8DCOZgnsLLX8c1o6QLnZfx35CHXv8jInau-zxcs7UqWxIufH-2xjocWe7BGR_IlQpbZnjcl0oVzuOgx3w27jHSA_-SF_qqwNzSuPfITdyjoUu_9n0T7jpriL4GYhr1gkooHJDuqP7aZHZqHVLPdqGjYbyrlu5SbqqDJhaSnEooP5V7r_FjKfLjR0_njjL-cW-6s3CcineTIxK1vFGLG7OE_sn1PXXmMLH2ie-vjw_0mm1nzSW_Nb-a2hwCMRKNW7bm-F7CiUGwTiH7LSavB58TWnIzXL7ArSBnl2O_e-GnaJ_9YUeQMXcG7Hw2vkreJyJ55AxoRF-4X3Zf0maB05jHKQSQ2Q5pgO3XfpGGC0VhNhj3KXsg0jOGocivjYkMmyfr7cr_WHceqA2jIREF-aCbCeLKYDiKgR3MbLLR8JaCy1MX_-KrQq6buIqXaesRUsEzAQKRoHy_uv2JMMVC1itsFb8gZi9KKwvRS9AIkVnQL8dG0WQqLJmFnClWzs3wpHPx-NNe2NHGtz2CGQAnlbEgQC7DMtEOX9ly7STOeEjpwjSSjXxKAzA5UU9_kJ0b73CrZ76faRKbAu5PEe_rzKgS8hmo=w1908-h1272-no?authuser=0"
-            />
-          </b-carousel>
-        </div>
+      <div class="container pt-5 mt-4 mt-sm-0 pt-sm-6 pt-md-7 pb-lg-7">
         <!-- post -->
-        <br>
         <b-row>
           <b-col sm="8">
+            <div>
+              <b-carousel
+                id="carousel-fade"
+                style="text-shadow: 0px 0px 2px #000"
+                fade
+                indicators
+                controls
+              >
+                <b-carousel-slide
+                  img-src="https://lh3.googleusercontent.com/YOvnW0skqeW_OexOuSNIgf_fgyMo4wCzHPosN_Fv8_me5GpzdiLOMH3GQdNGTcQPV5MI7mgEimXQpsDWIM97h2rVbVjqohzy0Jb0Fxlqdmp7NThQXqNo8MrUPvFxPC7PWgNL8s4bBKcRdrIgCUGtszZ0trGnexYAqUbF4FHGluQeDwNYRmAtGbNtbtJTFSzY4lwFma5_MfqrGN_CZ9AZOok0rpZMXA0F99FlOcQdoStfvoBOO8c5ABkfP6BTRYsYrzb_0TrdTzMl6Ov-uCKRXV7ChrNZRLA8Ii1aWubGf0PSxwHj8EK6PbcsfHky3SNpgHN7qJLT9jZCXzu16h3XdTTIkF6JsOUmhZ8YqKPfI4aq2rDuGpRHTu8bg5pj5V5vI0HtWuvVAPzcdDSsCPTM-DiUXcshJQcZWh6tbQMwSJkaOmQ47CCcpZ18FZeM3A-8brEU7xMeB9R7KtLzKicoC8XfM3pMtRMw5ceQD3-vJ69upqXd3M4ztSsBxq_7L_znWkQhX09VHu_miX6DnjjAfa9mt57JwPhKiVH4A1ziMWWillW5IWR3mIxb48QGCzDkLj3DLvebQuGo3MaIoMP4lGvhorgVH9MZYFOeLMJeK3G3Jpx-5kEcP9fFUg9N3PJ0KEMqL8URVFx7emm4t08O5gXU_82jImbd8S_bxbMy9ekHTx8DTCfjI2rIxABmmQ39C_fEvCmrBcPpXH4eprLBoiQ=w1908-h1272-no?authuser=0"
+                />
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>First slide label</h5>
+                  <p>Some representative placeholder content for the first slide.</p>
+                </div>
+                <b-carousel-slide
+                  img-src="https://lh3.googleusercontent.com/eKTE9uIt8m7HKHhdXCCM-lW2K6VdXdykARnlXYBBxo3bH5bwCFRotS3_DfgNZm3Ada-q7-wRfEeVrnd8eUk49ahgBxDEvxVFLnjBq2i5FVoVBuzTOQ51J-ThDWGhGR4piyYEGEfuPt1A3mw9Ou89kLbotRKvjXnQ-VCY-ymr2fCBlu-aZ2DQltUGYwb-I_gXskx9HvzLWIGVvY-Gx5lUOh3SwR0Qp-6zECrOlavqiotIV27lhAyNNJmHj22Aw7W_RcjTNHTNfgh37No-kLFCnmL-UsFKHIeNuN7segISaL5_T2T2DICNhKQ0jRQdvCV6y4CjKqbQjryZT3q0f7WB6LWgfFyp8qVMzfAxO2_c4l97VrFdA1dh9nxRGxt1Pn2_cDM6B6oR5kseywq5EaEImZHzgjZncGAMtC4cCj8lHlBO2qswz4EWdbgC7wqNELsgEwA-UT2VvXC-IoXqXKE1RlaesucUEWtkMcIwePmQjYu3CGVi8CgKAeJWh4-nIG31W9opZIs88NqVthVLr3OJemI033EVnBKUQ43cBVsDPJyG5w1ZMpSC3m-EFQpAnu9DVFW2dNQiWKkFUZEdky82ipFtPm3E4yOPh2gjeNTFXAIC9fnwA1znFoOqv0TiLcEnxvnvhwQOXDI7i25NUHLk4XQNqcByC5W3oo4w0DUnhuW5MecevK4kzGhBHLITIRV2JaVLu2c2zMuLfH2Aka4PpLg=w1908-h1272-no?authuser=0"
+                />
+                <b-carousel-slide
+                  img-src="https://lh3.googleusercontent.com/MHJA8J_vrQWfdYT8lsM8Ft5HJQpYQ0WGWMG1RrPzjvIl8XJVPG8Trnc2eNDohFEYmSmBaJVZM3gQGarfjg2NBY955un1Vkw6T2ceJ915rjhNieJZ1MzxtYlVhakHQ8DCOZgnsLLX8c1o6QLnZfx35CHXv8jInau-zxcs7UqWxIufH-2xjocWe7BGR_IlQpbZnjcl0oVzuOgx3w27jHSA_-SF_qqwNzSuPfITdyjoUu_9n0T7jpriL4GYhr1gkooHJDuqP7aZHZqHVLPdqGjYbyrlu5SbqqDJhaSnEooP5V7r_FjKfLjR0_njjL-cW-6s3CcineTIxK1vFGLG7OE_sn1PXXmMLH2ie-vjw_0mm1nzSW_Nb-a2hwCMRKNW7bm-F7CiUGwTiH7LSavB58TWnIzXL7ArSBnl2O_e-GnaJ_9YUeQMXcG7Hw2vkreJyJ55AxoRF-4X3Zf0maB05jHKQSQ2Q5pgO3XfpGGC0VhNhj3KXsg0jOGocivjYkMmyfr7cr_WHceqA2jIREF-aCbCeLKYDiKgR3MbLLR8JaCy1MX_-KrQq6buIqXaesRUsEzAQKRoHy_uv2JMMVC1itsFb8gZi9KKwvRS9AIkVnQL8dG0WQqLJmFnClWzs3wpHPx-NNe2NHGtz2CGQAnlbEgQC7DMtEOX9ly7STOeEjpwjSSjXxKAzA5UU9_kJ0b73CrZ76faRKbAu5PEe_rzKgS8hmo=w1908-h1272-no?authuser=0"
+                />
+              </b-carousel>
+            </div>
+            <br>
             <b-card-group deck>
               <b-card
                 border-variant="secondary"
@@ -114,7 +114,7 @@
           </b-col>
         </b-row>
         <br>
-      </section>
+      </div>
       <!-- footer -->
       <footer>
         <div class="foot">
@@ -218,14 +218,8 @@ export default {
   },
   methods: {
     move(e){
-      // this.changePosition();
       this.transale = 'translate3d(' + -e.clientX * 0.1 + 'px,' + -e.clientY * 0.1 + 'px, 0px)';
     },
-    // changePosition(){
-    //   const trans = 'translate3d(' + this.x + 'px,' + this.y + 'px, 0px);';
-    //   console.log(trans);
-    //   return trans;
-    // },
     async getListCategories(){
       await getCategories()
         .then((res) => {
@@ -304,7 +298,7 @@ img.img-fluid.w-100.d-block{
   overflow: hidden;
 }
 .foot{
-  background-image: linear-gradient(-29deg,#616d86,#1f1c2c)!important;
+  background-color: #343a40;
   padding: 5px;
 }
 .hp_main{
@@ -330,48 +324,15 @@ img.img-fluid.w-100.d-block{
   background-color: #242425!important ;
   z-index: -1  ;
 }
-.opening {
-  background-image: url('http://dexam-vue.ui-lib.com/img/bg.9d060711.jpeg') no-repeat;
-  z-index: 99;
-  overflow: hidden;
-}
 .red{
   width: 100%;
   height: 100%;
-  /* background-image: url('http://dexam-vue.ui-lib.com/img/v3-header.635efe8e.svg'); */
-  /* transform: translate3d(-100px, 0.1px, 0px); */
   transform-style: preserve-3d;
   backface-visibility: hidden;
   display: block;
-  /* z-index: 3; */
   overflow: hidden;
 }
-.typewriter{
-  background: rgba(51, 51, 51, 0);
-  padding-top: 5em;
-  display: flex;
-  justify-content: center;
-}
-.typewriter h1 {
-  color: #fff;
-  font-family: monospace;
-  overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: .15em solid orange; /* The typwriter cursor */
-  white-space: nowrap; /* Keeps the content on a single line */
-  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  letter-spacing: .15em; /* Adjust as needed */
-  animation: typing 3.5s steps(30, end),blink-caret .5s step-end infinite;
-}
-
-/* The typing effect */
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-/* The typewriter cursor effect */
-@keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: orange }
+b-card b-card-group{
+  margin-bottom: 5px ;
 }
 </style>

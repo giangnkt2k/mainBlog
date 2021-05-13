@@ -130,7 +130,6 @@ body {
     color: #333;
 }
 .navbar{
-    background-color: #fff;
     border-bottom: 1px solid #dee4ec;
     width: 100%;
     top: 0;
@@ -143,13 +142,14 @@ body {
   border: hidden;
   font-weight: 400;
   width: 100%;
+  box-shadow: 0 0 4px rgb(0 0 0 / 14%),0 4px 8px rgb(0 0 0 / 28%);
   padding: 0px !important;
 
   transition: all .5s ease-in-out;
 }
 .navUser{
-  background: #53515105;
-  background-color: #343a4008 !important;
+  background: #00000000;
+  /* background-image: #343a4008 !important; */
   margin: 0 auto;
   border: none !important;
   position: fixed;
@@ -159,6 +159,7 @@ body {
   right: 0;
   padding: 22px 0;
   transition: all .5s ease-in-out;
+  -webkit-transition: all .5s ease-in-out;
 }
 .navbar .nav-link{
     color: #5b6e88 !important;
