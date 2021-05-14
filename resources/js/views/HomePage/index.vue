@@ -42,45 +42,40 @@
               </b-carousel>
             </div>
             <br>
-            <b-card-group deck>
-              <b-card
-                border-variant="secondary"
-                header="Post new"
-                header-bg-variant="primary"
-                header-text-variant="white"
-                align="center"
+            <div>
+              <b-card-group
+                columns
+                style="column-count: 2;"
               >
-                <div v-for="item in posts" :key="item.id">
+                <div v-for="item in posts" :key="item.id" class="block">
+                  <b-card
+                    border-variant="light"
+                    :header="item.title"
+                    header-bg-variant="dark"
+                    header-text-variant="white"
+                    class="porta"
+                  >
+                    <b-img thumbnail fluid :src="item.picture" :alt="item.title" />
+                    <div class="d-flex w-100 justify-content-between">
+                      <!-- <h5 class="mb-1">{{ item.title }} </h5> -->
+                      <small>3 days ago</small>
+                    </div>
+                    <p class="mb-1 body_post" v-html="item.body" />
+                    <b-button size="sm" class="mr-2" @click="openDetailPopUp(item.id)">
+                      See Detail
+                    </b-button>
+                  </b-card>
+                </div></b-card-group>
+            </div>
+            <br>
 
-                  <b-list-group-item href="#" class="flex-column align-items-start">
-                    <b-row>
-                      <b-col cols="3">
-                        <b-img thumbnail fluid :src="item.picture" :alt="item.title" />
-                      </b-col>
-                      <b-col cols="9">
-                        <div class="d-flex w-100 justify-content-between">
-                          <h5 class="mb-1">{{ item.title }} </h5>
-                          <small>3 days ago</small>
-                        </div>
-                        <p class="mb-1 body_post" v-html="item.body" />
-                        <b-button size="sm" class="mr-2" @click="openDetailPopUp(item.id)">
-                          See Detail
-                        </b-button>
-                      </b-col>
-                    </b-row>
-                  </b-list-group-item>
-
-                  <br>
-                </div>
-                <b-pagination
-                  v-model="pagination.currentPage"
-                  class="pagianation"
-                  :total-rows="pagination.total_row"
-                  :per-page="pagination.perPage"
-                  aria-controls="my-table"
-                />
-              </b-card>
-            </b-card-group></b-col>
+            <b-pagination
+              v-model="pagination.currentPage"
+              class="pagianation"
+              :total-rows="pagination.total_row"
+              :per-page="pagination.perPage"
+              aria-controls="my-table"
+            /></b-col>
           <b-col sm="4">
             <b-card-group deck>
               <b-card thumbnail img-src="https://lh3.googleusercontent.com/f6R5Jyh_iFbilUfzcNKZQ8rgOmZjzz2ao1XQG0OgYPiTx45XS4Jv8JyZfmKf6IrBViqVRvUOm_oYn7ipgIp8Zb8d9baJ8fVB9s0_v7-rjvPi7oVabcM_MLG9uxd2zCX5fNcKOl6_zGbN-LH5c7r7vzvXBTsfZVN3zQhq-Vp1HQXWdZLH2mKJ_BKqLqn_p8yczgzlvOaxzIMY4WEyX1vT5b87EGpGDjSuitu30GPCDrQ-elJ1eaJY2F2wNSBOSaU7Nlxka91qpL6Ilw-rwsoKBauaKUmtnUtoeqhJPAcHDJu-U_IfDQIvI-WKghtxYRefPH-R6T9nj2PnghjqnVz9ScuGqk_fyw6P2RByRhsndAll_mq4Fk3cr2QD6uDmz0yUtI4FydN3yD5APE68ErO6wHNltopqp4s_3JcGUc1ddOlpO_FmsAqDcae_dfkT4AnrkIc8sxeUjhD1d3wtS4d5zzrecNbyHeOuiWeJ29m_ygBSosVZnYJKsdUyHXy6ngO5CLv5Fye1ZhsMbHXdf2wi3TBgsz6YMeAyip7vEiEtvKy53qgg6pKD4IyAht-ViOeIR_a6YZNEyFVn4nmX8mWvtir03odcUO8xOwG1zR-xH6L4ITvdLsthz3Zj7OwcbTWff4niI6sPG1delMeHiG6s9iCA4HWOH89PdTifMPfwHlYjoq3UTDNtBkd1SrJXDEiQo3DbKtP-PDJk30rEYm_Mp_w=w1454-h969-no?authuser=0" img-alt="Card image" img-top>
@@ -335,4 +330,21 @@ img.img-fluid.w-100.d-block{
 b-card b-card-group{
   margin-bottom: 5px ;
 }
+/* .postCard{
+ width: calc(100% / 2);
+ flex: 1 0 0%;
+ margin-bottom: 5px;
+ display: inline-block;
+}
+.block{
+  width: calc(100% / 2);
+  margin: 0 calc(20px / 2);
+}
+.block1{
+position: relative;
+}
+.porta{
+  top: 0;
+  left: 0;
+} */
 </style>
