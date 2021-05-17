@@ -6,7 +6,12 @@
         <div class="opening" @mousemove="move">
           <b-row>
             <b-col>
-              <h1>Welcome mina</h1>
+              <p class="logo-1 po">
+                Wellcome
+              </p>
+              <p class="logo-1 po">
+                Everyone
+              </p>
             </b-col>
             <b-col>
               <b-img src="http://dexam-vue.ui-lib.com/img/v3-header.635efe8e.svg" class="red" :style="{transform: transale}" style="height: 100%;" />
@@ -66,16 +71,19 @@
                     </b-button>
                   </b-card>
                 </div></b-card-group>
+              <center>
+                <b-pagination
+                  v-model="pagination.currentPage"
+                  class="pagianation"
+                  :total-rows="pagination.total_row"
+                  :per-page="pagination.perPage"
+                  aria-controls="my-table"
+                />
+              </center>
             </div>
             <br>
 
-            <b-pagination
-              v-model="pagination.currentPage"
-              class="pagianation"
-              :total-rows="pagination.total_row"
-              :per-page="pagination.perPage"
-              aria-controls="my-table"
-            /></b-col>
+          </b-col>
           <b-col sm="4">
             <b-card-group deck>
               <b-card thumbnail img-src="https://lh3.googleusercontent.com/f6R5Jyh_iFbilUfzcNKZQ8rgOmZjzz2ao1XQG0OgYPiTx45XS4Jv8JyZfmKf6IrBViqVRvUOm_oYn7ipgIp8Zb8d9baJ8fVB9s0_v7-rjvPi7oVabcM_MLG9uxd2zCX5fNcKOl6_zGbN-LH5c7r7vzvXBTsfZVN3zQhq-Vp1HQXWdZLH2mKJ_BKqLqn_p8yczgzlvOaxzIMY4WEyX1vT5b87EGpGDjSuitu30GPCDrQ-elJ1eaJY2F2wNSBOSaU7Nlxka91qpL6Ilw-rwsoKBauaKUmtnUtoeqhJPAcHDJu-U_IfDQIvI-WKghtxYRefPH-R6T9nj2PnghjqnVz9ScuGqk_fyw6P2RByRhsndAll_mq4Fk3cr2QD6uDmz0yUtI4FydN3yD5APE68ErO6wHNltopqp4s_3JcGUc1ddOlpO_FmsAqDcae_dfkT4AnrkIc8sxeUjhD1d3wtS4d5zzrecNbyHeOuiWeJ29m_ygBSosVZnYJKsdUyHXy6ngO5CLv5Fye1ZhsMbHXdf2wi3TBgsz6YMeAyip7vEiEtvKy53qgg6pKD4IyAht-ViOeIR_a6YZNEyFVn4nmX8mWvtir03odcUO8xOwG1zR-xH6L4ITvdLsthz3Zj7OwcbTWff4niI6sPG1delMeHiG6s9iCA4HWOH89PdTifMPfwHlYjoq3UTDNtBkd1SrJXDEiQo3DbKtP-PDJk30rEYm_Mp_w=w1454-h969-no?authuser=0" img-alt="Card image" img-top>
@@ -84,8 +92,8 @@
                 </b-card-text>
               </b-card>
             </b-card-group>
-            <b-card-group deck>
-              <b-card no-body header="Tags">
+            <b-card-group deck class="card-deck1">
+              <b-card no-body bg-variant="dark" text-variant="white" class="text-center" header="Tags">
 
                 <b-list-group flush>
                   <div v-for="item in tags" :key="item.id">
@@ -95,8 +103,8 @@
 
               </b-card>
             </b-card-group>
-            <b-card-group deck>
-              <b-card no-body header="Categories">
+            <b-card-group deck class="card-deck1">
+              <b-card no-body bg-variant="dark" text-variant="white" class="text-center" header="Categories">
 
                 <b-list-group flush>
                   <div v-for="item in categories" :key="item.id">
@@ -112,6 +120,8 @@
       </div>
       <!-- footer -->
       <footer>
+        <div _ngcontent-gvr-c39="" class="svg-border-rounded text-dark">
+          <svg _ngcontent-gvr-c39="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none" fill="currentColor"><path _ngcontent-gvr-c39="" d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0" /></svg></div>
         <div class="foot">
           <b-row>
             <b-col cols="4">
@@ -330,21 +340,53 @@ img.img-fluid.w-100.d-block{
 b-card b-card-group{
   margin-bottom: 5px ;
 }
-/* .postCard{
- width: calc(100% / 2);
- flex: 1 0 0%;
- margin-bottom: 5px;
- display: inline-block;
+.card-deck1{
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
-.block{
-  width: calc(100% / 2);
-  margin: 0 calc(20px / 2);
+.page-item.active .page-link{
+  background-color:#343a40 ;
+  border-color:#343a40 ;
 }
-.block1{
-position: relative;
+.pagination{
+  justify-content: center;
 }
-.porta{
-  top: 0;
-  left: 0;
-} */
+:root {
+  --shadow-color: #0b064b;
+  --shadow-color-light: white;
+}
+.po {
+  font-size: 65px;
+  text-transform: uppercase;
+  font-family: "Archivo Black", "Archivo", sans-serif;
+  font-weight: normal;
+  display: block;
+  height: auto;
+  text-align: center;
+}
+.topFoot{
+  background-color: #343a40;
+}
+.logo-1 {
+  color: white;
+  animation: neon 3s infinite;
+}
+
+@keyframes neon {
+  0% {
+    text-shadow: -1px -1px 1px var(--shadow-color-light), -1px 1px 1px var(--shadow-color-light), 1px -1px 1px var(--shadow-color-light), 1px 1px 1px var(--shadow-color-light),
+    0 0 3px var(--shadow-color-light), 0 0 10px var(--shadow-color-light), 0 0 20px var(--shadow-color-light),
+    0 0 30px var(--shadow-color), 0 0 40px var(--shadow-color), 0 0 50px var(--shadow-color), 0 0 70px var(--shadow-color), 0 0 100px var(--shadow-color), 0 0 200px var(--shadow-color);
+  }
+  50% {
+    text-shadow: -1px -1px 1px var(--shadow-color-light), -1px 1px 1px var(--shadow-color-light), 1px -1px 1px var(--shadow-color-light), 1px 1px 1px var(--shadow-color-light),
+    0 0 5px var(--shadow-color-light), 0 0 15px var(--shadow-color-light), 0 0 25px var(--shadow-color-light),
+    0 0 40px var(--shadow-color), 0 0 50px var(--shadow-color), 0 0 60px var(--shadow-color), 0 0 80px var(--shadow-color), 0 0 110px var(--shadow-color), 0 0 210px var(--shadow-color);
+  }
+  100% {
+    text-shadow: -1px -1px 1px var(--shadow-color-light), -1px 1px 1px var(--shadow-color-light), 1px -1px 1px var(--shadow-color-light), 1px 1px 1px var(--shadow-color-light),
+    0 0 3px var(--shadow-color-light), 0 0 10px var(--shadow-color-light), 0 0 20px var(--shadow-color-light),
+    0 0 30px var(--shadow-color), 0 0 40px var(--shadow-color), 0 0 50px var(--shadow-color), 0 0 70px var(--shadow-color), 0 0 100px var(--shadow-color), 0 0 200px var(--shadow-color);
+  }
+}
 </style>
