@@ -507,6 +507,7 @@ export default {
             content: ' Tạo post thành công',
             toaster: 'b-toaster-bottom-center',
           });
+          this.getListPost();
           this.title = '';
           this.body = '';
           this.value_categories = [];
