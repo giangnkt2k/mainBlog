@@ -28,9 +28,9 @@ Route::namespace('Api')->group(function() {
         Route::post('/logout','AuthController@logout');
     });
     // categories
-    Route::apiResource('/categories','CategoriesController');
+    Route::apiResource('/categories','CategoryController');
     // tags
-    Route::apiResource('/tags','TagsController');
+    Route::apiResource('/tags','TagController');
     //post
     Route::apiResource('/post','PostController');
 });

@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-use Illuminate\Support\Arr;
+
 use App\Http\Controllers\Controller;
-use App\Models\Categories;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
-class CategoriesController extends Controller
+
+class TagController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +16,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-       
-        $query = Categories::query()->get();
-        return Categories::all();
+        $query = Tag::query()->get();
+        return Tag::all();
     }
 
     /**
@@ -29,7 +29,7 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         $req = $request->all();
-        $categories = Categories::create([
+        $tag = Tag::create([
             "name" => $req['name']
         ]);
         return response()->json(["messsage" => "Create Successfully"]);
@@ -38,10 +38,10 @@ class CategoriesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Categories  $categories
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function show(Categories $categories)
+    public function show(Tag $tag)
     {
         //
     }
@@ -50,24 +50,24 @@ class CategoriesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Categories  $categories
+     * @param  \App\Models\Tag $tag
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
     {
         $req = $request->all();
-        $categories = Categories::find($req['id']);
-        if(!isset($categories))
+        $tag = Tag::find($req['id']);
+        if(!isset($tag))
         return response()->json(["message" => "There is no data match"],500);
-        $categories->name = $req['name'];
-        $categories->save();
+        $tag->name = $req['name'];
+        $tag->save();
         return response()->json(["messsage" => "Update Successfully"]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Categories  $categories
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -75,10 +75,10 @@ class CategoriesController extends Controller
         try {
             // $categories = Employee::find($id);
             // $req = $id->all();
-            $categories = Categories::find($id);
-            if(!isset($categories))
+            $tag = Tag::find($id);
+            if(!isset($tag))
             return response()->json(["message" => "There is no data match"],500);
-            $categories->delete();
+            $tag->delete();
 
             return response()->json([
                 "message" => "Delete Successfully"

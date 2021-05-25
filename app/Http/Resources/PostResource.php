@@ -21,8 +21,8 @@ class PostResource extends JsonResource
                 'title' => $this->title,
                 'body' => $this->body,
                 'picture' => env('MIX_STORE_IMAGE_URL', false).'/'.$this->picture,
-                'tags' => PostTagsResource::collection($this->tags),
-                'categories' => PostCategoriesResource::collection($this->categories)
+                'tag' => PostTagResource::collection($this->tag),
+                'category' => PostCategoryResource::collection($this->category)
             ];
         }
         else  

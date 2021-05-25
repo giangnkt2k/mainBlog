@@ -13,7 +13,7 @@ class PostTags extends Model
     ];
     public function tags()
     {
-        return $this->belongsTo('App\Models\Tags','tags_id','id');
+        return $this->belongsTo('App\Models\Tag','tags_id','id');
     }
 
     public function post()

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PostCategories extends Model
+class PostCategory extends Model
 {
     protected $table = "post_has_categories";
     protected $fillable = [
@@ -13,7 +13,7 @@ class PostCategories extends Model
     ];
     public function categories()
     {
-        return $this->belongsToMany('App\Models\Categories','categories_id','id');
+        return $this->belongsToMany('App\Models\Category','categories_id','id');
     }
 
     public function post()

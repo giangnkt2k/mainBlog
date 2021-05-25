@@ -26,6 +26,16 @@ class PostController extends Controller
         $home = (isset($req['homepage'])) ? $req['homepage'] : "";
         if($home === 'yes'){
             $query = Post::query();
+           
+          //  if(isset($req['category'])){
+                // $queryC = Categories::query()->where('id', $req['category'])
+                // ->with([
+                //     "post" => function($queryC){
+                //         $queryC->paginate(10,['id','title','picture','body'],10);
+                //     }
+                // ]);
+                // return $queryC->get(['id','name']);
+           // }
             return PostResource::collection($query->paginate(10,['id','title','picture','body'],'page'));
         }
         else{
@@ -65,13 +75,13 @@ class PostController extends Controller
             "body" => $req[ 'body'],
             "picture" => $picture
         ]);
-        $post->categories()->attach($req['categories']);
-        $post->tags()->attach($req['tags']);
+        $post->category()->attach($req['categories']);
+        $post->tag()->attach($req['tags']);
         $post = $post->where('id',$post->id)->with([
-            "categories" => function($query){
+            "category" => function($query){
                 $query->select(['id','name']);
             },
-            "tags" => function($query){
+            "tag" => function($query){
                 $query->select(['id','name']);
             }
         ])->get(["*"]);
@@ -91,10 +101,10 @@ class PostController extends Controller
         if(!isset($post))
         return response()->json(["message" => "There is no data match"],500);
         $post = $post->where('id',$post->id)->with([
-            "categories" => function($query){
+            "category" => function($query){
                 $query->select(['id','name']);
             },
-            "tags" => function($query){
+            "tag" => function($query){
                 $query->select(['id','name']);
             }
         ])->get(["*"]);

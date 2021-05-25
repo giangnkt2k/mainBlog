@@ -14,7 +14,7 @@
               </p>
             </b-col>
             <b-col>
-              <b-img src="http://dexam-vue.ui-lib.com/img/v3-header.635efe8e.svg" class="red" :style="{transform: transale}" style="height: 100%;" />
+              <b-img src="http://dexam-vue.ui-lib.com/img/v3-header.635efe8e.svg" class="red" :style="{transform: transale}" style="height: 80%;" />
             </b-col>
           </b-row>
         </div>
@@ -58,9 +58,11 @@
                     :header="item.title"
                     header-bg-variant="dark"
                     header-text-variant="white"
+                    :img-src="item.picture"
+                    tag="article"
+                    style="max-width: 20rem;"
                     class="porta"
                   >
-                    <b-img thumbnail fluid :src="item.picture" :alt="item.title" />
                     <div class="d-flex w-100 justify-content-between">
                       <!-- <h5 class="mb-1">{{ item.title }} </h5> -->
                       <small>3 days ago</small>
@@ -108,7 +110,7 @@
 
                 <b-list-group flush>
                   <div v-for="item in categories" :key="item.id">
-                    <b-list-group-item href="#">{{ item.name }}</b-list-group-item>
+                    <b-list-group-item href="#" @click="searchByCategory(item.id)">{{ item.name }}</b-list-group-item>
                   </div>
                 </b-list-group>
 
@@ -188,6 +190,7 @@ export default {
         picture: '',
         body: '',
       },
+      category: [],
       title_modal: '',
       x: 0,
       y: 0,
@@ -217,16 +220,31 @@ export default {
     },
     async getListPost(){
       var page = this.pagination.currentPage;
-      await getPost({
-        homepage: 'yes',
-        page: page,
-      })
+      if (this.category.length > 0){
+        var params = {
+          homepage: 'yes',
+          page: page,
+          category: this.category[0],
+        };
+      } else {
+        params = {
+          homepage: 'yes',
+          page: page,
+        };
+      }
+
+      await getPost(params)
         .then((res) => {
           this.posts = res.data;
           this.pagination.currentPage = res.meta.current_page;
           this.pagination.perPage = res.meta.per_page;
           this.pagination.total_row = res.meta.total;
+          this.category = [];
         });
+    },
+    searchByCategory(value){
+      this.category = value;
+      this.getListPost();
     },
     async openDetailPopUp(item){
       await getOnePost(item)
@@ -243,7 +261,7 @@ export default {
 
 <style>
 .silde{
-  margin-bottom: 10px;
+  margin-bottom: 50px;
 }
 @media only screen and (max-width: 3000px){
   .body_post{
